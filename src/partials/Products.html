@@ -1,0 +1,47 @@
+﻿<div id="products_content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="../Home">Home</a></li>
+            <li class="breadcrumb-item active">Products</li>
+        </ol>
+    </nav>
+    <br />
+    <section class="actions">
+        <a class="btn btn-primary" href="#!/Product_Add">Add New Product</a>
+    </section>
+    <br />
+    <section class="data">
+        <div data-ng-if="hasData('Products')">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Release Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of Products">
+                        <td>{{product.ID}}</td>
+                        <td>{{product.Name}}</td>
+                        <td>{{product.Rating}}</td>
+                        <td>{{product.Description}}</td>
+                        <td>{{product.Price}}</td>
+                        <td>{{product.ReleaseDate | date}}</td>
+                        <td>
+                            <a routerLink="../Product_Edit/{{product.ID}}">Edit</a> |
+                            <a data-ng-click="product_Delete(product.ID)">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div data-ng-if="!hasData('Products')">
+            <p>No data found.</p>
+        </div>
+    </section>
+</div>

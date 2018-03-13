@@ -1,0 +1,30 @@
+﻿<div id="department_AddEdit_content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#!/Departments">Departments</a></li>
+            <li class="breadcrumb-item active">{{ViewBag.OpTyp}} Department</li>
+        </ol>
+    </nav>
+    <br />
+    <section>
+        <form id="department_AddEdit_form" name="department_AddEdit_form" role="form">
+            <input type="hidden" id="Id" name="Id" data-ng-model="Department.Id" />
+            <fieldset>
+                <legend>{{ViewBag.OpTyp}} Department</legend>
+                <div class="text-danger validation-summary-error">
+                    <ul>
+                        <li data-ng-if="!department_AddEdit_form.Name.$valid">The Name field is required.</li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input type="text" id="Name" name="Name" data-ng-model="Department.Name" class="form-control" required />
+                </div>
+                <input type="button" class="btn btn-primary" value="Save" data-ng-click="Department_CreateUpdate(department_AddEdit_form.$valid)" />
+                <input type="reset" class="btn btn-primary" value="Reset" />
+            </fieldset>
+        </form>
+    </section>
+</div>
+

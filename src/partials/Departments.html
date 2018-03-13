@@ -1,0 +1,39 @@
+﻿<div id="departments_content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="../Home">Home</a></li>
+            <li class="breadcrumb-item active">Departments</li>
+        </ol>
+    </nav>
+    <br />
+    <section class="actions right">
+        <a class="btn btn-primary" href="#!/Department_Add">Add New Department</a>
+    </section>
+    <br />
+    <section class="data">
+        <div data-ng-if="hasData('Departments')">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let department of Departments">
+                        <td>{{department.ID}}</td>
+                        <td>{{department.Name}}</td>
+                        <td>
+                            <a routerLink="../Product_Edit/{{department.ID}}">Edit</a> |
+                            <a data-ng-click="Model_Delete('Department', department.Id)">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div data-ng-if="!hasData('Departments')">
+            <p>No data found.</p>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,41 @@
+﻿<div id="brands_content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="../Home">Home</a></li>
+            <li class="breadcrumb-item active">Brands</li>
+        </ol>
+    </nav>
+    <br />
+    <section class="actions right">
+        <a class="btn btn-primary" routerLink="Brand_Add">Add New Brand</a>
+    </section>
+    <br />
+    <section class="data">
+        <div *ngIf="hasData('Brands')">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let brand of Brands">
+                        <td>{{brand.ID}}</td>
+                        <td>{{brand.Name}}</td>
+                        <td>{{brand.Address.Street}}, {{brand.Address.City}}, {{brand.Address.State}}, {{brand.Address.Country}} ({{brand.Address.ZipCode}})</td>
+                        <td>
+                            <a routerLink="../Brand_Edit/{{brand.ID}}">Edit</a> |
+                            <a data-ng-click="brand_Delete(brand.Id)">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="!hasData('Brands')">
+            <p>No data found.</p>
+        </div>
+    </section>
+</div>
